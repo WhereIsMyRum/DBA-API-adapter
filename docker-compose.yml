@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    proxy:
+        image: nginx:latest
+        ports: 
+            - 80:80
+            - 443:443
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+        depends_on:
+            - scraper-api
+
+    scraper-api:
+        build: ./API
+        command: bash -c "nodemon --exec go run ./main.go --signal SIGTERM"
+        volumes:
+            - ./API/cmd/web/main.go:/go/src/cmd/web/main.go
+            - ./API/pkg/:/go/src/pkg/
