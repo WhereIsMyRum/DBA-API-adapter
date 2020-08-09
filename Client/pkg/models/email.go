@@ -26,7 +26,7 @@ type Email struct {
 func (e *Email) CreateEmail(m *[]Basic) {
 	e.Sender = SENDER
 	e.Recipient = RECIPIENT
-	e.Subject = "New Beds available on dba.dk"
+	e.Subject = "New items available on dba.dk"
 	e.HtmlBody = createHtmlBody(m)
 	e.TextBody = "This email was sent with Amazon SES using the AWS SDK for Go."
 	e.CharSet = CHARSET
