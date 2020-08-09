@@ -30,7 +30,9 @@ func LookFor(URL string, FilePath string) {
 
 	if !reflect.DeepEqual(newResults, previousResults) {
 		newItems := findNew(*newMap, *previousMap)
-		sendNotification(newItems)
+		if newItems != nil {
+			sendNotification(newItems)
+		}
 	}
 
 	if result != "" {
